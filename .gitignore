@@ -1,0 +1,13 @@
+nodemonignore
+.sass-cache/
+node_modules/
+public/lib/
+app/tests/coverage/
+.bower-*/
+.idea/
+coverage/
+data
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
