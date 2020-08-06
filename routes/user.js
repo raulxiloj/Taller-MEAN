@@ -1,13 +1,10 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const router = express.Router()
+const { registerUser, login } = require('../controllers/authController')
 
-router.post("/login", function(req,res){
-    res.send("Hola Login")
-})
+router.post("/login", login);
 
-router.post("/register", function(req,res){
-    res.send("Hola Register")
-})
+router.post("/register", registerUser);
 
 
 
