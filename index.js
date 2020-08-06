@@ -3,7 +3,7 @@ const app = express()
 const cors = require('cors')
 const router = express.Router()
 const bodyParser = require('body-parser')
-const mongoose = require ('mongoose')
+const mongoose = require('mongoose')
 
 
 /**
@@ -17,27 +17,29 @@ var user = require('./routes/user')
  */
 app.use(cors())
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:false}))
-app.listen(3000,() => console.log("Server start on port 3000"))
+app.use(bodyParser.urlencoded({ extended: false }))
+app.listen(3000, () => console.log("Server start on port 3000"))
 
 /**
  * Conexión con la base de datos
  *
  */
-const usuario = require("./UserSchema");
 const uri = "mongodb+srv://adminTaller:adminTaller123@cluster0.a0nse.mongodb.net/Testing?retryWrites=true&w=majority";
-mongoose.connect(uri, function (err) {
 
-    useMongoClient = true
-    if (err) throw err;
-    console.log('Conectado Correctamente');
-});
+const dbConnection = async () => {
+    try {
+        await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+        console.log('Conectado Correctamente');
+    } catch (e) {
+        console.log(e)
+    }
+}
 
-
+dbConnection();
 
 
 /**
  * Rutas
  */
 
-app.use("/",user)
+app.use("/", user)
