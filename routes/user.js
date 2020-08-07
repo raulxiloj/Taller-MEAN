@@ -1,15 +1,12 @@
 const express = require('express')
 const routes = express.Router()
+const { registerUser, login } = require('../controllers/auth')
 
-routes.post("/login",function(req,res){
-    res.send("Hola login")
-})
+routes.post("/register", registerUser);
 
-routes.post("/register",function(req,res){
-    res.send("Hola Register")
-})
+routes.post("/login", login);
 
-routes.get("/home",function(req,res){
+routes.get("/home", function (req, res) {
     res.send("Hola Home")
 })
 
